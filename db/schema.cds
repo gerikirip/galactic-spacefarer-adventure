@@ -1,6 +1,8 @@
 using { cuid } from '@sap/cds/common';
 
-entity Spacefarer : cuid {
+entity Spacefarers : cuid {
+    name: String;
+    userName: String;
     stardustCollection: Integer;
     wormholeNavigationSkill: Integer;
     originPlanet: String;
