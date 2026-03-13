@@ -1,0 +1,52 @@
+### Service Root
+GET http://localhost:4004/odata/v4/spacefarer
+
+### Get all Spacefarers (as galactic-commander)
+GET http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic lyra-storm lyra-storm
+
+### Get own data (as nova-vega)
+GET http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic nova-vega nova-vega
+
+### Get own data (as orion-flux)
+GET http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic orion-flux orion-flux
+
+### Get all Departments (as galactic-commander)
+GET http://localhost:4004/odata/v4/spacefarer/Departments
+Authorization: Basic lyra-storm lyra-storm
+
+### Get all Positions (as galactic-commander)
+GET http://localhost:4004/odata/v4/spacefarer/Positions
+Authorization: Basic lyra-storm lyra-storm
+
+### Create a new Spacefarer (as galactic-commander)
+POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic lyra-storm lyra-storm
+Content-Type: application/json
+
+{
+    "name": "Zephyr Nova",
+    "userName": "zephyr-nova",
+    "stardustCollection": 150,
+    "wormholeNavigationSkill": 75,
+    "originPlanet": "Saturn",
+    "spaceSuitColor": "Yellow",
+    "department_ID": "d1a2b3c4-0001-4000-8000-000000000001",
+    "position_ID": "p1a2b3c4-0001-4000-8000-000000000001"
+}
+
+### Try to create a Spacefarer as regular user (should fail)
+POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic nova-vega nova-vega
+Content-Type: application/json
+
+{
+    "name": "Fake Spacefarer",
+    "userName": "fake",
+    "stardustCollection": 50,
+    "wormholeNavigationSkill": 30,
+    "originPlanet": "Mercury",
+    "spaceSuitColor": "Green"
+}
