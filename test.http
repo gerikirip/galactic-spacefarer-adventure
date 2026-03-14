@@ -1,3 +1,7 @@
+### ===========================
+### Task 2 - Authentication
+### ===========================
+
 ### Service Root
 GET http://localhost:4004/odata/v4/spacefarer
 
@@ -13,15 +17,11 @@ Authorization: Basic nova-vega nova-vega
 GET http://localhost:4004/odata/v4/spacefarer/Spacefarers
 Authorization: Basic orion-flux orion-flux
 
-### Get all Departments (as galactic-commander)
-GET http://localhost:4004/odata/v4/spacefarer/Departments
-Authorization: Basic lyra-storm lyra-storm
+### ===========================
+### Task 3 - Event Handlers
+### ===========================
 
-### Get all Positions (as galactic-commander)
-GET http://localhost:4004/odata/v4/spacefarer/Positions
-Authorization: Basic lyra-storm lyra-storm
-
-### Create a new Spacefarer (as galactic-commander)
+### Create a new Spacefarer (as galactic-commander) - should trigger @Before and @After
 POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
 Authorization: Basic lyra-storm lyra-storm
 Content-Type: application/json
@@ -33,11 +33,59 @@ Content-Type: application/json
     "wormholeNavigationSkill": 75,
     "originPlanet": "Saturn",
     "spaceSuitColor": "Yellow",
-    "department_ID": "d1a2b3c4-0001-4000-8000-000000000001",
-    "position_ID": "p1a2b3c4-0001-4000-8000-000000000001"
+    "departmentName": "Galactic Engineering",
+    "positionName": "Junior Spacefarer"
 }
 
-### Try to create a Spacefarer as regular user (should fail)
+### Create with negative stardustCollection (should fail with 400)
+POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic lyra-storm lyra-storm
+Content-Type: application/json
+
+{
+    "name": "Bad Spacefarer",
+    "userName": "bad-spacefarer",
+    "stardustCollection": -50,
+    "wormholeNavigationSkill": 75,
+    "originPlanet": "Saturn",
+    "spaceSuitColor": "Yellow",
+    "departmentName": "Galactic Engineering",
+    "positionName": "Junior Spacefarer"
+}
+
+### Create with invalid spaceSuitColor (should fail with 400)
+POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic lyra-storm lyra-storm
+Content-Type: application/json
+
+{
+    "name": "Bad Spacefarer",
+    "userName": "bad-spacefarer2",
+    "stardustCollection": 50,
+    "wormholeNavigationSkill": 75,
+    "originPlanet": "Saturn",
+    "spaceSuitColor": "Pink",
+    "departmentName": "Galactic Engineering",
+    "positionName": "Junior Spacefarer"
+}
+
+### Create with invalid department (should fail with 404)
+POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
+Authorization: Basic lyra-storm lyra-storm
+Content-Type: application/json
+
+{
+    "name": "Bad Spacefarer",
+    "userName": "bad-spacefarer3",
+    "stardustCollection": 50,
+    "wormholeNavigationSkill": 75,
+    "originPlanet": "Saturn",
+    "spaceSuitColor": "Yellow",
+    "departmentName": "Unknown Department",
+    "positionName": "Junior Spacefarer"
+}
+
+### Try to create a Spacefarer as regular user (should fail with 403)
 POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
 Authorization: Basic nova-vega nova-vega
 Content-Type: application/json
@@ -48,5 +96,7 @@ Content-Type: application/json
     "stardustCollection": 50,
     "wormholeNavigationSkill": 30,
     "originPlanet": "Mercury",
-    "spaceSuitColor": "Green"
+    "spaceSuitColor": "Green",
+    "departmentName": "Galactic Engineering",
+    "positionName": "Junior Spacefarer"
 }
