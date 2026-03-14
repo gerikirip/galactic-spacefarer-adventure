@@ -6,8 +6,8 @@ service SpacefarerService {
         { grant: 'READ', to: 'authenticated-user', where: 'userName = $user' }
     ]
     entity Spacefarers as projection on Spacefarers_ {
-        ID, name, userName, stardustCollection, wormholeNavigationSkill, originPlanet, spaceSuitColor,
-        department.ID as department_ID, department.name as departmentName, position.ID as position_ID, 
+        *,
+        department.name as departmentName, 
         position.name as positionName
     };
     @readonly entity Departments as projection on Departments_;

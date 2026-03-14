@@ -33,8 +33,8 @@ Content-Type: application/json
     "wormholeNavigationSkill": 75,
     "originPlanet": "Saturn",
     "spaceSuitColor": "Yellow",
-    "department_ID": "d1a2b3c4-0001-4000-8000-000000000001",
-    "position_ID": "p1a2b3c4-0001-4000-8000-000000000001"
+    "departmentName": "Galactic Engineering",
+    "positionName": "Junior Spacefarerr"
 }
 
 ### Try to create a Spacefarer as regular user (should fail)
