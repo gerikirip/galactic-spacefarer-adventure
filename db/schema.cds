@@ -1,11 +1,12 @@
 using { cuid } from '@sap/cds/common';
 
 entity Spacefarers : cuid {
-    name: String;
-    userName: String;
+    name: String not null;
+    @assert.unique
+    userName: String not null;
     stardustCollection: Integer;
     wormholeNavigationSkill: Integer;
-    originPlanet: String;
+    originPlanet: String not null;
     spaceSuitColor : SpaceSuitColor;
     department : Association to Departments;
     position   : Association to Positions;
@@ -16,9 +17,11 @@ type SpaceSuitColor : String enum {
 }
 
 entity Departments : cuid {
+    @assert.unique
     name : String;
 }
 
 entity Positions : cuid {
+    @assert.unique
     name : String;
 }
