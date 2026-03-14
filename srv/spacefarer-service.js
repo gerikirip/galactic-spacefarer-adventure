@@ -49,7 +49,8 @@ module.exports = class SpacefarerService extends cds.ApplicationService {
             });
         });
         this.after('CREATE', 'Spacefarers', (data, req) => {
-            
+            const { name } = req.data;
+            req.notify(200, `Welcome aboard, ${name}! Your cosmic journey among the stars begins now!`)
         });
 
         return super.init();
