@@ -5,6 +5,7 @@ service SpacefarerService {
         { grant: '*', to: 'galactic-commander' },
         { grant: 'READ', to: 'authenticated-user', where: 'userName = $user' }
     ]
+    @odata.draft.enabled
     entity Spacefarers as projection on Spacefarers_ {
         *,
         department.name as departmentName, 

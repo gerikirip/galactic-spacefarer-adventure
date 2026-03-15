@@ -75,7 +75,17 @@ annotate service.Spacefarers with @(
             Value : spaceSuitColor,
         },
     ],
+    UI.DeleteHidden : true,
 );
+
+annotate service.Spacefarers with {
+    name                    @Core.Immutable: true;
+    userName                @Core.Immutable: true;
+    wormholeNavigationSkill @Core.Immutable: true;
+    originPlanet            @Core.Immutable: true;
+    departmentName          @Core.Immutable: true;
+    positionName            @Core.Immutable: true;
+}
 
 annotate service.Spacefarers with {
     department @Common.ValueList : {
