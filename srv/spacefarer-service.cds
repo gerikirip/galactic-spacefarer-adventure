@@ -3,7 +3,7 @@ using { Spacefarers as Spacefarers_, Departments as Departments_, Positions as P
 service SpacefarerService {
     @restrict: [
         { grant: '*', to: 'galactic-commander' },
-        { grant: 'READ', to: 'authenticated-user', where: 'userName = $user' }
+        { grant: ['READ', 'UPDATE'], to: 'authenticated-user', where: 'userName = $user' }
     ]
     entity Spacefarers as projection on Spacefarers_ {
         *,

@@ -75,7 +75,6 @@ annotate service.Spacefarers with @(
             Value : spaceSuitColor,
         },
     ],
-    UI.DeleteHidden : true,
 );
 
 annotate service.Spacefarers with {
