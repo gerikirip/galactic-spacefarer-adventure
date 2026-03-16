@@ -8,8 +8,8 @@ service SpacefarerService {
     @odata.draft.enabled
     entity Spacefarers as projection on Spacefarers_ {
         *,
-        department.name as departmentName, 
-        position.name as positionName
+        @readonly department.name as departmentName, 
+        @readonly position.name as positionName
     };
     @readonly entity Departments as projection on Departments_;
     @readonly entity Positions   as projection on Positions_;

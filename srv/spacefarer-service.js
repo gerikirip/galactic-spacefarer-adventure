@@ -6,12 +6,10 @@ module.exports = class SpacefarerService extends cds.ApplicationService {
             const {
                 name,
                 userName,
-                originPlanet, 
-                stardustCollection, 
+                originPlanet,
+                stardustCollection,
                 wormholeNavigationSkill,
-                spaceSuitColor, 
-                departmentName, 
-                positionName,
+                spaceSuitColor,
             } = req.data;
 
             const isEmpty = (value) => !value || value.trim() === '';
@@ -25,28 +23,9 @@ module.exports = class SpacefarerService extends cds.ApplicationService {
             const isPositiveNumber = (value) => value > 0;
             if (!isPositiveNumber(stardustCollection)) req.error(400, 'Stardust Collection must be a positive number!');
             if (!isPositiveNumber(wormholeNavigationSkill)) req.error(400, 'Wormhole Navigation Skill must be a positive number!');
-            
+
             const existing = await SELECT.one.from('Spacefarers').where({ userName: userName });
             if (existing) req.error(409, 'User name already exists!');
-
-            this.departments = await SELECT.from('Departments');
-            const department = this.departments.find(d => d.name === departmentName);
-            if (!department) {
-                req.reject(404, `Department not found! Available departments: ${this.departments.map(d => d.name).join(', ')}`)
-                return;
-            }
-
-            this.positions = await SELECT.from('Positions');
-            const position = this.positions.find(p => p.name === positionName);
-            if (!position) {
-                req.reject(404, `Position not found! Available positions: ${this.departments.map(d => d.name).join(', ')}`)
-                return;
-            }
-            
-            Object.assign(req.data, {
-                department_ID: department.ID,
-                position_ID: position.ID
-            });
         });
         this.after('CREATE', 'Spacefarers', (data, req) => {
             const { name } = req.data;
