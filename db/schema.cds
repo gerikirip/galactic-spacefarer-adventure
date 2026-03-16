@@ -12,6 +12,8 @@ entity Spacefarers : cuid {
 
     stardustCollection: Integer;
 
+    @Core.Immutable 
+    @title: 'Wormhole Navigation Skill'
     wormholeNavigationSkill: Integer;
 
     @Core.Immutable 
