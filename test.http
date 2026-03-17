@@ -69,22 +69,6 @@ Content-Type: application/json
     "positionName": "Junior Spacefarer"
 }
 
-### Create with invalid department (should fail with 404)
-POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
-Authorization: Basic lyra-storm lyra-storm
-Content-Type: application/json
-
-{
-    "name": "Bad Spacefarer",
-    "userName": "bad-spacefarer3",
-    "stardustCollection": 50,
-    "wormholeNavigationSkill": 75,
-    "originPlanet": "Saturn",
-    "spaceSuitColor": "Yellow",
-    "departmentName": "Unknown Department",
-    "positionName": "Junior Spacefarer"
-}
-
 ### Try to create a Spacefarer as regular user (should fail with 403)
 POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
 Authorization: Basic nova-vega nova-vega

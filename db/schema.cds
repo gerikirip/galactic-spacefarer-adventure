@@ -1,15 +1,34 @@
 using { cuid } from '@sap/cds/common';
 
 entity Spacefarers : cuid {
+    @Core.Immutable 
+    @title: 'Name'
     name: String not null;
+
     @assert.unique
+    @Core.Immutable 
+    @title: 'User Name'
     userName: String not null;
+
     stardustCollection: Integer;
+
+    @Core.Immutable 
+    @title: 'Wormhole Navigation Skill'
     wormholeNavigationSkill: Integer;
+
+    @Core.Immutable 
+    @title: 'Origin Planet'
     originPlanet: String not null;
-    spaceSuitColor : SpaceSuitColor;
-    department : Association to Departments;
-    position   : Association to Positions;
+
+    spaceSuitColor: SpaceSuitColor;
+
+    @Core.Immutable 
+    @title: 'Department'
+    department: Association to Departments;
+
+    @Core.Immutable 
+    @title: 'Position'
+    position: Association to Positions;
 }
 
 type SpaceSuitColor : String enum {
@@ -18,10 +37,10 @@ type SpaceSuitColor : String enum {
 
 entity Departments : cuid {
     @assert.unique
-    name : String;
+    name: String;
 }
 
 entity Positions : cuid {
     @assert.unique
-    name : String;
+    name: String;
 }

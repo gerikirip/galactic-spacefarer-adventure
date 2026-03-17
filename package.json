@@ -8,26 +8,49 @@
     "@cap-js/sqlite": "^2",
     "@eslint/js": "^9",
     "@sap/eslint-plugin-cds": "^4",
-    "eslint": "^9"
+    "eslint": "^9",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "deploy": "cds deploy",
+    "dev": "cds deploy && cds watch",
+    "watch-galactic-spacefarer": "cds watch --open galacticspacefarer/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
-  "cds": 
-    { "requires": {
+  "cds": {
+    "requires": {
       "db": {
-          "kind": "sqlite",
-          "credentials": { "url": "galactic-spacefarer.sqlite" } 
+        "kind": "sqlite",
+        "credentials": {
+          "url": "galactic-spacefarer.sqlite"
+        }
       },
-      "auth": {
-        "kind": "basic",
-        "users": {
-          "lyra-storm": { "password": "lyra-storm", "roles": ["galactic-commander"]}, 
-          "nova-vega": { "password": "nova-vega" },
-          "orion-flux": { "password": "orion-flux" }
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "lyra-storm": {
+              "password": "lyra-storm",
+              "roles": [
+                "galactic-commander"
+              ]
+            },
+            "nova-vega": {
+              "password": "nova-vega"
+            },
+            "orion-flux": {
+              "password": "orion-flux"
+            }
+          }
         }
       }
-    } 
+    }
   },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/galactic-spacefarer"
+  ]
 }
