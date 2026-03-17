@@ -43,7 +43,7 @@ SAP CAP List Report and Object Page Fiori application
 ```
 
 2. Open in VS Code and reopen in Dev Container:
-   - Press `Ctrl+Shift+P`
+   - Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
    - Select **"Dev Containers: Reopen in Container"**
    - Wait for the container to build
 

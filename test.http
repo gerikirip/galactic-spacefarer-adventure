@@ -21,7 +21,7 @@ Authorization: Basic orion-flux orion-flux
 ### Task 3 - Event Handlers
 ### ===========================
 
-### Create a new Spacefarer (as galactic-commander) - should trigger @Before and @After
+### Create a new Spacefarer (as galactic-commander)
 POST http://localhost:4004/odata/v4/spacefarer/Spacefarers
 Authorization: Basic lyra-storm lyra-storm
 Content-Type: application/json
@@ -33,8 +33,8 @@ Content-Type: application/json
     "wormholeNavigationSkill": 75,
     "originPlanet": "Saturn",
     "spaceSuitColor": "Yellow",
-    "departmentName": "Galactic Engineering",
-    "positionName": "Junior Spacefarer"
+    "department_ID": "6d92c8a2-dcc5-4153-939e-5a36cde842f1",
+    "position_ID": "f0499114-59a2-43f8-8c71-855038946f2e"
 }
 
 ### Create with negative stardustCollection (should fail with 400)
@@ -49,8 +49,8 @@ Content-Type: application/json
     "wormholeNavigationSkill": 75,
     "originPlanet": "Saturn",
     "spaceSuitColor": "Yellow",
-    "departmentName": "Galactic Engineering",
-    "positionName": "Junior Spacefarer"
+    "department_ID": "6d92c8a2-dcc5-4153-939e-5a36cde842f1",
+    "position_ID": "f0499114-59a2-43f8-8c71-855038946f2e"
 }
 
 ### Create with invalid spaceSuitColor (should fail with 400)
@@ -65,8 +65,8 @@ Content-Type: application/json
     "wormholeNavigationSkill": 75,
     "originPlanet": "Saturn",
     "spaceSuitColor": "Pink",
-    "departmentName": "Galactic Engineering",
-    "positionName": "Junior Spacefarer"
+    "department_ID": "6d92c8a2-dcc5-4153-939e-5a36cde842f1",
+    "position_ID": "f0499114-59a2-43f8-8c71-855038946f2e"
 }
 
 ### Try to create a Spacefarer as regular user (should fail with 403)
@@ -81,6 +81,6 @@ Content-Type: application/json
     "wormholeNavigationSkill": 30,
     "originPlanet": "Mercury",
     "spaceSuitColor": "Green",
-    "departmentName": "Galactic Engineering",
-    "positionName": "Junior Spacefarer"
+    "department_ID": "6d92c8a2-dcc5-4153-939e-5a36cde842f1",
+    "position_ID": "f0499114-59a2-43f8-8c71-855038946f2e"
 }

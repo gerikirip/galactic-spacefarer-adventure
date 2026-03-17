@@ -11,7 +11,9 @@ module.exports = class SpacefarerService extends cds.ApplicationService {
                 originPlanet,
                 stardustCollection,
                 wormholeNavigationSkill,
-                spaceSuitColor
+                spaceSuitColor,
+                department_ID,
+                position_ID
             } = req.data;
 
             const isEmpty = (value) => !value || value.trim() === '';
@@ -26,6 +28,12 @@ module.exports = class SpacefarerService extends cds.ApplicationService {
 
             const existing = await SELECT.one.from('Spacefarers').where({ userName: userName });
             if (existing) req.error(409, 'User name already exists!');
+
+            const department = await SELECT.one.from('Departments').where({ ID: department_ID });
+            if (!department) req.error(404, `Department with ID "${department_ID}" not found!`);
+
+            const position = await SELECT.one.from('Positions').where({ ID: position_ID });
+            if (!position) req.error(404, `Position with ID "${position_ID}" not found!`);
         });
         this.after('CREATE', 'Spacefarers', (data, req) => {
             const { name } = req.data;
