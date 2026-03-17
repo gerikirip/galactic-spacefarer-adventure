@@ -13,6 +13,8 @@
   },
   "scripts": {
     "start": "cds-serve",
+    "deploy": "cds deploy",
+    "dev": "cds deploy && cds watch",
     "watch-galactic-spacefarer": "cds watch --open galacticspacefarer/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "cds": {
@@ -23,20 +25,22 @@
           "url": "galactic-spacefarer.sqlite"
         }
       },
-      "auth": {
-        "kind": "basic",
-        "users": {
-          "lyra-storm": {
-            "password": "lyra-storm",
-            "roles": [
-              "galactic-commander"
-            ]
-          },
-          "nova-vega": {
-            "password": "nova-vega"
-          },
-          "orion-flux": {
-            "password": "orion-flux"
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "lyra-storm": {
+              "password": "lyra-storm",
+              "roles": [
+                "galactic-commander"
+              ]
+            },
+            "nova-vega": {
+              "password": "nova-vega"
+            },
+            "orion-flux": {
+              "password": "orion-flux"
+            }
           }
         }
       }

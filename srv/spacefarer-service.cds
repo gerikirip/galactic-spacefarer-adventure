@@ -7,10 +7,18 @@ service SpacefarerService {
     ]
     entity Spacefarers as projection on Spacefarers_ {
         *,
-        @readonly department.name as departmentName, 
+        @readonly department.name as departmentName,
         @readonly position.name as positionName
     };
+
+    @restrict: [
+        { grant: 'READ', to: 'galactic-commander' },
+    ]
     @readonly entity Departments as projection on Departments_;
+
+    @restrict: [
+        { grant: 'READ', to: 'galactic-commander' },
+    ]
     @readonly entity Positions   as projection on Positions_;
 }
 annotate SpacefarerService.Spacefarers with @odata.draft.enabled;
