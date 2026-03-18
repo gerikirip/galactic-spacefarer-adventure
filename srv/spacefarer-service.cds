@@ -1,5 +1,6 @@
 using { Spacefarers as Spacefarers_, Departments as Departments_, Positions as Positions_ } from '../db/schema';
 
+@requires: 'authenticated-user'
 service SpacefarerService {
     @restrict: [
         { grant: '*', to: 'galactic-commander' },
