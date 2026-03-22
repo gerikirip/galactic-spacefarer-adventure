@@ -2,9 +2,6 @@
 ### Task 2 - Authentication
 ### ===========================
 
-### Service Root
-GET http://localhost:4004/odata/v4/spacefarer
-
 ### Get all Spacefarers (as galactic-commander)
 GET http://localhost:4004/odata/v4/spacefarer/Spacefarers
 Authorization: Basic lyra-storm lyra-storm
