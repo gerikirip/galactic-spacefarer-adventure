@@ -13,12 +13,12 @@ service SpacefarerService {
     };
 
     @restrict: [
-        { grant: 'READ', to: 'galactic-commander' },
+        { grant: 'READ', to: 'authenticated-user' },
     ]
     @readonly entity Departments as projection on Departments_;
 
     @restrict: [
-        { grant: 'READ', to: 'galactic-commander' },
+        { grant: 'READ', to: 'authenticated-user' },
     ]
     @readonly entity Positions   as projection on Positions_;
 }

@@ -5,42 +5,42 @@ annotate service.Spacefarers with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'name',
+                Label : 'Full Name',
                 Value : name,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'userName',
+                Label : 'User Name',
                 Value : userName,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'stardustCollection',
+                Label : 'Stardust Collection',
                 Value : stardustCollection,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'wormholeNavigationSkill',
+                Label : 'Wormhole Navigation Skill',
                 Value : wormholeNavigationSkill,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'originPlanet',
+                Label : 'Origin Planet',
                 Value : originPlanet,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'spaceSuitColor',
+                Label : 'Space Suit Color',
                 Value : spaceSuitColor,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'departmentName',
+                Label : 'Department Name',
                 Value : departmentName,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'positionName',
+                Label : 'Position Name',
                 Value : positionName,
             },
         ],
@@ -56,22 +56,22 @@ annotate service.Spacefarers with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'name',
+            Label : 'Full Name',
             Value : name,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'userName',
+            Label : 'User Name',
             Value : userName,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'stardustCollection',
+            Label : 'Stardust Collection',
             Value : stardustCollection,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'spaceSuitColor',
+            Label : 'Space Suit Color',
             Value : spaceSuitColor,
         },
     ],
