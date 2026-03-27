@@ -1,7 +1,7 @@
 const cds = require('@sap/cds');
 
 const checkPositiveNumber = (value, fieldName, req) => {
-    if (value < 0) 
+    if (value <= 0) 
         req.error(400, `${fieldName} must be a positive number!`);
 };
 
